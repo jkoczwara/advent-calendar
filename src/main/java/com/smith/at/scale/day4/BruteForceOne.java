@@ -24,11 +24,14 @@ class BruteForceOne {
      */
     public boolean check(int input) {
         String asString = String.valueOf(input);
-        return isSixDigitNumber(asString) && hasRepetitions(asString) && repeatedDigitsAreExactlyTwoDigitsLong(asString);
+        return  isSixDigitNumber(input) && hasRepetitions(asString) && repeatedDigitsAreExactlyTwoDigitsLong(asString);
     }
 
-    private boolean isSixDigitNumber(String asString) {
-        return asString.length() == 6;
+    private static final int SIX_DIGITS = 100000;
+    private static final int SEVEN_DIGITS = 1000000;
+
+    private boolean isSixDigitNumber(int input) {
+        return (input / SIX_DIGITS > 0 && input / SEVEN_DIGITS == 0);
     }
 
     private boolean hasRepetitions(String asString) {
